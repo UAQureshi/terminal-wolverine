@@ -48,6 +48,10 @@ terminal-wolverine/
 
 ![Copilot CLI statusline](screenshots/copilot-statusline.png)
 
+**Claude Code statusline** (same aesthetic, Claude-specific metrics):
+
+![Claude Code statusline](screenshots/claude-statusline.png)
+
 | pill | meaning |
 | --- | --- |
 |  | model name (from Copilot payload) |

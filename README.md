@@ -38,15 +38,11 @@ terminal-wolverine/
 
 **Interactive zsh prompt** (single line, cursor right after `❯`):
 
-```
- macOS   ~/source/repos    git  main      ❯              ✓   14%   2.0G   29%   8.31   15:04:24   100%
-```
+![Interactive zsh prompt](screenshots/zsh-prompt.png)
 
 **Copilot CLI statusline** (one wide pill bar):
 
-```
- Claude Opus 4.7   ~   16.0k/200.0k  ##........   00:09:00   14%   2.0G   29%   $0.34   1.2k/m   3   12   +15/-3
-```
+![Copilot CLI statusline](screenshots/copilot-statusline.png)
 
 | pill | meaning |
 | --- | --- |

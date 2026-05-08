@@ -4,6 +4,7 @@ A Catppuccin-styled, pill-shaped terminal setup for **macOS** that gives you:
 
 - A fast, single-line **Oh My Posh** prompt for interactive `zsh` with system pills (CPU, RAM, disk, load, time, battery) on the right.
 - A matching **GitHub Copilot CLI statusline** with the same aesthetic plus session-aware metrics: model, context gauge, duration, **cost ($)**, **tokens/min**, **files edited**, **tool-call count**, and `+/- lines`.
+- A matching **Claude Code statusline** with the same pills (model, duration, CPU/RAM/disk, **cost**, **files edited**, **tool calls**, `+/-`).
 
 Built around three constraints discovered the hard way:
 
@@ -22,6 +23,9 @@ terminal-wolverine/
 ├── copilot/
 │   ├── statusline.sh                # entry point Copilot CLI invokes
 │   └── statusline.omp.json          # OMP theme for the statusline
+├── claude/
+│   ├── statusline.sh                # entry point Claude Code invokes
+│   └── statusline.omp.json          # OMP theme for the Claude statusline
 ├── oh-my-posh/
 │   ├── zsh.omp.json                 # interactive zsh prompt theme
 │   ├── mem.sh                       # free RAM (vm_stat → GiB)
@@ -132,6 +136,34 @@ GitHub Copilot CLI reads `~/.copilot/settings.json`. Add (or merge) these keys:
 > Replace `<you>` with your actual username (the path must be absolute).
 
 If the file already exists, only add the missing keys; leave anything else untouched. Restart Copilot CLI for the statusline to appear.
+
+---
+
+## Claude Code settings
+
+Claude Code reads `~/.claude/settings.json`. The installer registers it for you, but if you prefer to do it manually:
+
+```json
+{
+  "statusLine": {
+    "type": "command",
+    "command": "/Users/<you>/.claude/statusline.sh",
+    "padding": 1
+  }
+}
+```
+
+Restart Claude Code (`/exit`, then re-open) to pick up the change.
+
+What works vs Copilot:
+
+| pill | Copilot | Claude |
+| --- | --- | --- |
+| model, cwd, duration, CPU/RAM/disk, cost ($), files, tools, +/- | ✅ | ✅ |
+| context tokens + gauge | ✅ | ❌ (not in payload) |
+| tokens/min | ✅ | ❌ (no token field) |
+
+Per-session state lives in `${TMPDIR}/claude_session_<session_id>.json`.
 
 ---
 

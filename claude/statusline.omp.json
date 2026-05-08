@@ -1,0 +1,120 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 3,
+  "final_space": false,
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "text",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b0",
+          "foreground": "#1a1a1a",
+          "background": "#fab387",
+          "template": " \uf6d3 {{ if .Env.CLAUDE_STATUS_MODEL }}{{ .Env.CLAUDE_STATUS_MODEL }}{{ else }}claude{{ end }} "
+        },
+        {
+          "type": "git",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#1a1a1a",
+          "background": "#f9e2af",
+          "background_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}#f9e2af{{ end }}",
+            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#f38ba8{{ end }}",
+            "{{ if gt .Ahead 0 }}#a6e3a1{{ end }}",
+            "{{ if gt .Behind 0 }}#cba6f7{{ end }}"
+          ],
+          "template": " \ue725 {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }} \uf069{{ end }}{{ if gt .Ahead 0 }} \u2191{{ .Ahead }}{{ end }}{{ if gt .Behind 0 }} \u2193{{ .Behind }}{{ end }} ",
+          "properties": {
+            "branch_icon": "",
+            "fetch_status": true,
+            "fetch_upstream_icon": true
+          }
+        },
+        {
+          "type": "path",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#1a1a1a",
+          "background": "#fab387",
+          "template": " \uf07b {{ .Path }} ",
+          "properties": {
+            "style": "agnoster_short",
+            "max_depth": 2,
+            "folder_icon": "\uf07b",
+            "home_icon": "~"
+          }
+        },
+        {
+          "type": "text",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#1a1a1a",
+          "background": "#74c7ec",
+          "template": " \uf017 {{ .Env.CLAUDE_STATUS_DURATION }} "
+        },
+        {
+          "type": "text",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#1a1a1a",
+          "background": "#cba6f7",
+          "template": "{{ if .Env.OMP_CPU }} \uf4bc {{ .Env.OMP_CPU }} {{ end }}"
+        },
+        {
+          "type": "text",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#1a1a1a",
+          "background": "#94e2d5",
+          "template": "{{ if .Env.OMP_RAM }} \uf85a {{ .Env.OMP_RAM }} {{ end }}"
+        },
+        {
+          "type": "text",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#1a1a1a",
+          "background": "#f9e2af",
+          "template": "{{ if .Env.OMP_DISK }} \uf0a0 {{ .Env.OMP_DISK }} {{ end }}"
+        },
+        {
+          "type": "text",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#1a1a1a",
+          "background": "#a6e3a1",
+          "template": "{{ if .Env.CLAUDE_STATUS_COST }} \uf155 {{ .Env.CLAUDE_STATUS_COST }} {{ end }}"
+        },
+        {
+          "type": "text",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#1a1a1a",
+          "background": "#fab387",
+          "template": "{{ if ne .Env.CLAUDE_STATUS_FILES \"0\" }} \uf15b {{ .Env.CLAUDE_STATUS_FILES }} {{ end }}"
+        },
+        {
+          "type": "text",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#1a1a1a",
+          "background": "#b4befe",
+          "template": "{{ if ne .Env.CLAUDE_STATUS_TOOLS \"0\" }} \uf0ad {{ .Env.CLAUDE_STATUS_TOOLS }} {{ end }}"
+        },
+        {
+          "type": "text",
+          "style": "diamond",
+          "leading_diamond": "",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "#1a1a1a",
+          "background": "#cba6f7",
+          "template": "{{ if .Env.CLAUDE_STATUS_CHANGES }} \uf044 {{ .Env.CLAUDE_STATUS_CHANGES }} {{ end }}"
+        }
+      ]
+    }
+  ]
+}
